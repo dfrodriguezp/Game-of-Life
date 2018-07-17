@@ -14,10 +14,12 @@ cells = [[None for j in range(rows)] for i in range(cols)]
 
 for i in range(cols):
     for j in range(rows):
-        if numpy.random.uniform() < 0.3:
-            cells[i][j] = Cell(i, j, w, 1)
-        else:
-            cells[i][j] = Cell(i, j, w, 0)
+        cells[i][j] = Cell(i, j, 0)
+
+# System
+gliderGun(10, 5, cells)
+# randomAlive(0.4, cells)
+
 text = pygame.font.SysFont("Arial", 15)
 text.set_bold(True)
 
@@ -47,11 +49,11 @@ while True:
             current = cells[i][j].state
             nhbs = cells[i][j].countAlive(cells)
             if (current == 0) and (nhbs == 3):
-                nxt[i][j] = Cell(i, j, w, 1)
+                nxt[i][j] = Cell(i, j, 1)
             elif (current == 1) and ((nhbs < 2) or (nhbs > 3)):
-                nxt[i][j] = Cell(i, j, w, 0)
+                nxt[i][j] = Cell(i, j, 0)
             else:
-                nxt[i][j] = Cell(i, j, w, current)
+                nxt[i][j] = Cell(i, j, current)
 
     cells = nxt
     pygame.display.update()

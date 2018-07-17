@@ -3,18 +3,17 @@ import pygame
 pygame.init()
 
 class Cell(object):
-    def __init__(self, i, j, w, state):
+    def __init__(self, i, j, state):
         self.i = i
         self.j = j
-        self.w = w
         self.state = state
 
     def show(self, screen):
         if self.state == 1:
-            pygame.draw.rect(screen, yellow, (self.i*w, self.j*w, self.w, self.w))
+            pygame.draw.rect(screen, yellow, (self.i*w, self.j*w, w, w))
         else:
-            pygame.draw.rect(screen, grey, (self.i*w, self.j*w, self.w, self.w))
-        pygame.draw.rect(screen, (150, 150, 150), (self.i*w, self.j*w, self.w, self.w), 1)
+            pygame.draw.rect(screen, grey, (self.i*w, self.j*w, w, w))
+        pygame.draw.rect(screen, (150, 150, 150), (self.i*w, self.j*w, w, w), 1)
 
     def countAlive(self, mesh):
         total = 0
