@@ -14,7 +14,7 @@ cells = [[None for j in range(rows)] for i in range(cols)]
 
 for i in range(cols):
     for j in range(rows):
-        cells[i][j] = Cell(i, j, 0)
+        cells[i][j] = Cell(i, j, DEAD)
 
 # System
 gliderGun(10, 5, cells)
@@ -48,10 +48,10 @@ while True:
         for j in range(rows):
             current = cells[i][j].state
             nhbs = cells[i][j].countAlive(cells)
-            if (current == 0) and (nhbs == 3):
-                nxt[i][j] = Cell(i, j, 1)
-            elif (current == 1) and ((nhbs < 2) or (nhbs > 3)):
-                nxt[i][j] = Cell(i, j, 0)
+            if (current == DEAD) and (nhbs == 3):
+                nxt[i][j] = Cell(i, j, ALIVE)
+            elif (current == ALIVE) and ((nhbs < 2) or (nhbs > 3)):
+                nxt[i][j] = Cell(i, j, DEAD)
             else:
                 nxt[i][j] = Cell(i, j, current)
 

@@ -12,11 +12,14 @@ grey = (51, 51, 51)
 yellow = (255, 255, 0)
 green = (0, 255, 0)
 
+ALIVE = 1
+DEAD = 0
+
 def randomAlive(p, mesh):
     for i in range(cols):
         for j in range(rows):
             if numpy.random.uniform() < p:
-                mesh[i][j].state = 1
+                mesh[i][j].state = ALIVE
 
 def gliderGun(x, y, mesh):
     alive = list()
@@ -63,4 +66,4 @@ def gliderGun(x, y, mesh):
     alive.append(mesh[x+35][y+3])
 
     for cell in alive:
-        cell.state = 1
+        cell.state = ALIVE
